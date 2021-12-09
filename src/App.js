@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import FeedbackList from './components/FeedbackList';
 import Notification from './components/Notification';
-// import Buttons from './components/Buttons';
 import FeedbackOptions from './components/FeedbackOptions';
 
 import Section from './components/Section';
