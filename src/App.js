@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 import FeedbackList from './components/FeedbackList';
 import Notification from './components/Notification';
-import Buttons from './components/Buttons';
+// import Buttons from './components/Buttons';
+import FeedbackOptions from './components/FeedbackOptions';
 
 import Section from './components/Section';
 
@@ -60,10 +61,9 @@ class App extends Component {
     return (
       <>
         <Section title="Please, leave feedback">
-          <Buttons
-            good={this.handleClickGood}
-            bad={this.handleClickBad}
-            neutral={this.handleClickNeutral}
+          <FeedbackOptions
+            options={['good', 'neutral', 'bad']}
+            onLeaveFeedback={[this.handleClickGood, this.handleClickNeutral, this.handleClickBad]}
           />
         </Section>
 

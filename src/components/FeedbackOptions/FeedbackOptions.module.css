@@ -11,6 +11,7 @@
   line-height: 1.62;
   letter-spacing: inherit;
   text-align: center;
+  text-transform: capitalize;
   color: #fff;
 
   cursor: pointer;
@@ -30,16 +31,16 @@
   background-color: rgba(66, 64, 64, 0.843);
 }
 
-.btn-good {
+.good {
   composes: button;
   background-color: green;
 }
 
-.btn-neutral {
+.neutral {
   composes: button;
   background-color: rgb(236, 201, 2);
 }
-.btn-bad {
+.bad {
   composes: button;
   background-color: red;
 }
