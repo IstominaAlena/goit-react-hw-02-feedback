@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import FeedbackList from './components/FeedbackList';
+import Statistics from './components/Statistics';
 import Notification from './components/Notification';
 import FeedbackOptions from './components/FeedbackOptions';
 
@@ -15,34 +15,19 @@ class App extends Component {
     bad: 0,
   };
 
-  visible = false;
+  buttonsOption = ['good', 'neutral', 'bad'];
 
-  handleClickGood = () => {
+  handleClick = option => {
     this.setState(prevState => {
       return {
-        good: prevState.good + 1,
-      };
-    });
-  };
-
-  handleClickNeutral = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
-
-  handleClickBad = () => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
+        [option]: prevState[option] + 1,
       };
     });
   };
 
   countTotalFeedback = () => {
-    const totalFeedback = this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+    const totalFeedback = good + neutral + bad;
     return totalFeedback;
   };
 
@@ -54,25 +39,25 @@ class App extends Component {
   };
 
   render() {
-    const total = this.countTotalFeedback();
-    const percentage = this.countPositiveFeedbackPercentage();
+    const { countTotalFeedback, countPositiveFeedbackPercentage, handleClick, buttonsOption } =
+      this;
+    const { good, neutral, bad } = this.state;
+    const total = countTotalFeedback();
+    const percentage = countPositiveFeedbackPercentage();
 
     return (
       <>
         <Section title="Please, leave feedback">
-          <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
-            onLeaveFeedback={[this.handleClickGood, this.handleClickNeutral, this.handleClickBad]}
-          />
+          <FeedbackOptions options={buttonsOption} onLeaveFeedback={handleClick} />
         </Section>
 
         <Section title="Statistics">
           {total ? (
-            <FeedbackList
+            <Statistics
               total={total}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
-              good={this.state.good}
+              neutral={neutral}
+              bad={bad}
+              good={good}
               percentage={percentage}
             />
           ) : (

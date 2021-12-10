@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import styles from './FeedbackList.module.css';
+import styles from './Statistics.module.css';
 
-const FeedbackList = ({ good, bad, neutral, total, percentage }) => {
+const Statistics = ({ good, bad, neutral, total, percentage }) => {
   return (
     <ul className={styles.list}>
       <li className={styles.item}>
@@ -28,9 +28,9 @@ const FeedbackList = ({ good, bad, neutral, total, percentage }) => {
   );
 };
 
-export default FeedbackList;
+export default Statistics;
 
-FeedbackList.propType = {
+Statistics.propType = {
   good: PropTypes.number.isRequired,
   bad: PropTypes.number.isRequired,
   neutral: PropTypes.number.isRequired,

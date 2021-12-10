@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import styles from './FeedbackOptions.module.css';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-  const buttons = options.map((option, index) => (
+  const buttons = options.map(option => (
     <button
       type="button"
-      onClick={onLeaveFeedback[index]}
-      className={styles[`${option}`]}
+      onClick={() => onLeaveFeedback(option)}
+      className={styles[option]}
       key={option}
     >
       {option}
@@ -19,6 +19,6 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 export default FeedbackOptions;
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string),
-  onLeaveFeedback: PropTypes.arrayOf(PropTypes.func),
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
